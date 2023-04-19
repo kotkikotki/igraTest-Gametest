@@ -19,15 +19,7 @@ private:
 
 public:
     
-    /*template<class T, typename = enable_if_t<is_base_of_v<Component, T>>>
-    void AddComponent()
-    {
-        if (GetComponent<T>() != nullptr)throw std::invalid_argument("Component already exists.");
-
-        std::dynamic_pointer_cast<T>(mem_components.insert(std::make_pair(std::type_index(typeid(T)), new T))->second);
-        //
-        std::cout << "Component added=" << std::endl;
-    }*/
+    
 
     template<class T, typename = enable_if_t<is_base_of_v<Component, T>>>
     std::shared_ptr<T> AddComponent()
