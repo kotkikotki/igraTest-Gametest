@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\downloaded assets">
+      <UniqueIdentifier>{54a5ead1-65cb-45cf-a16c-93838e2a4b43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\downloaded assets\background-jungle">
+      <UniqueIdentifier>{54814e3b-24ff-42d2-8e7a-360e7fa1510d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\nyan cat">
+      <UniqueIdentifier>{5c6b29b1-6016-43f3-b2cf-a93dbccf05ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\space assets">
+      <UniqueIdentifier>{67c2999f-c2a2-4d28-8948-05022c2c5d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\space assets\background">
+      <UniqueIdentifier>{46dcd1f4-ad99-435b-a7ac-dab109d87cf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\space assets\space ship">
+      <UniqueIdentifier>{061068cd-de15-47c9-b88e-7279bffb48d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\space assets\space ship\idle">
+      <UniqueIdentifier>{025409fd-8607-436e-8495-d10a6d0c8d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\space assets\space ship\powering">
+      <UniqueIdentifier>{ffce6515-74cd-4089-b414-61d5e7af0765}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundManager_Horizontal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundManager_Vertical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\res\as it was.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\res\cinema.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\res\daydreaming.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\res\rec2.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="..\..\res\rec1.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MusicSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundManager_Horizontal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundManager_Vertical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Definitions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationComponent.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityDrawer.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\res\assets\used\plx-1.png">
+      <Filter>Resource Files\downloaded assets\background-jungle</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\plx-2.png">
+      <Filter>Resource Files\downloaded assets\background-jungle</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\plx-3.png">
+      <Filter>Resource Files\downloaded assets\background-jungle</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\plx-4.png">
+      <Filter>Resource Files\downloaded assets\background-jungle</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\plx-5.png">
+      <Filter>Resource Files\downloaded assets\background-jungle</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\PC Computer - Nyan Cat Lost In Space - Nyan Cat_r.png">
+      <Filter>Resource Files\nyan cat</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\Blue_Nebula_07-1024x1024.png">
+      <Filter>Resource Files\space assets\background</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\Main Ship - Engines - Base Engine - Idle.png">
+      <Filter>Resource Files\space assets\space ship\idle</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\Blue_Nebula_02-1024x1024.png">
+      <Filter>Resource Files\space assets\background</Filter>
+    </Image>
+    <Image Include="..\..\res\assets\used\edited\base.png">
+      <Filter>Resource Files\space assets\space ship</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
