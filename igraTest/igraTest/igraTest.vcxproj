@@ -168,6 +168,9 @@
     <Image Include="..\..\res\assets\used\plx-4.png" />
     <Image Include="..\..\res\assets\used\plx-5.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="script.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -37,6 +37,9 @@
     <Filter Include="Resource Files\space assets\space ship\powering">
       <UniqueIdentifier>{ffce6515-74cd-4089-b414-61d5e7af0765}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\dep">
+      <UniqueIdentifier>{6535dfa6-85d3-4349-9dac-9e7244aaed19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -144,5 +147,10 @@
     <Image Include="..\..\res\assets\used\edited\base.png">
       <Filter>Resource Files\space assets\space ship</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="script.txt">
+      <Filter>Resource Files\dep</Filter>
+    </Text>
   </ItemGroup>
 </Project>
