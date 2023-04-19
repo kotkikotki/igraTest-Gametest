@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationComponent.hpp" />
+    <ClInclude Include="AnimationSystem.hpp" />
     <ClInclude Include="BackgroundManager_Horizontal.h" />
     <ClInclude Include="BackgroundManager_Vertical.h" />
     <ClInclude Include="Component.h" />

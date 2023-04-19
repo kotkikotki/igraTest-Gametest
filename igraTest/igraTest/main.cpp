@@ -13,7 +13,8 @@
 #include "Components.h"
 
 
-void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundManagerV, Entity &entity, EntityDrawer &entityDrawer)
+void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundManagerV, Scene &scene, EntityDrawer &entityDrawer, 
+			AnimationSystem &animationSystem)
 {
 	if(IsKeyPressed(KEY_P))
 	{
@@ -29,11 +30,11 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 	}
 	if (IsKeyDown(KEY_D))
 	{
-		entity.GetComponent<TransformComponent>()->mem_rotation += 2.f;
+		scene.GetEntity(0)->GetComponent<TransformComponent>()->mem_rotation += 2.f;
 	}
 	if (IsKeyDown(KEY_A))
 	{
-		entity.GetComponent<TransformComponent>()->mem_rotation -= 2.f;
+		scene.GetEntity(0)->GetComponent<TransformComponent>()->mem_rotation -= 2.f;
 	}
 	
 	
@@ -44,8 +45,10 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 	backgroundManagerV.UpdateTexturePositionValues();
 
 	//test
-	entity.GetComponent<AnimationComponent>()->On_Update();
-	entity.GetComponent<AnimationComponent>()->mem_AnimationScript->mem_Properties.ChangeVariableByName("frameSpeed", std::to_string(backgroundManagerV.GetCurrentSpeed()));
+	
+	//scene.GetEntity(0)->GetComponent<AnimationComponent>()->On_Update();
+	animationSystem.On_Update_Animate();
+	scene.GetEntity(0)->GetComponent<AnimationComponent>()->mem_AnimationScript->mem_Properties.ChangeVariableByName("frameSpeed", std::to_string(backgroundManagerV.GetCurrentSpeed()));
 	
 	//!test
 	
@@ -56,7 +59,7 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 
 		backgroundManagerV.UpdateTexturePositions();
 		//entity.GetComponent<TransformComponent>()->mem_position = { (float)GetMouseX(), (float)GetMouseY()};
-		entity.GetComponent<TransformComponent>()->mem_position.x = GetMouseX();
+		scene.GetEntity(0)->GetComponent<TransformComponent>()->mem_position.x = GetMouseX();
 
 		//test
 		
@@ -109,6 +112,7 @@ int main()
 	
 	//sprite
 
+	Scene s1;
 	
 	Entity e1;
 	
@@ -119,10 +123,13 @@ int main()
 	e1.AddComponent<AnimationComponent>()->Initialize(std::make_shared<AdvancedLoopAnimationScript>(AdvancedLoopAnimationScript()),
 		e1.GetComponent<SpriteComponent>());
 	
-	std::vector<std::shared_ptr<Entity>> entities = { std::make_shared<Entity>(e1) };
+	e1.GetComponent<AnimationComponent>()->GetScript()->AddLinkedProperty("frameSpeed", std::to_string(backgorundManagerV.GetCurrentSpeed()));
 
-	EntityDrawer entityDrawer(entities);
-	
+	s1.AddEntity(e1);
+
+
+	EntityDrawer entityDrawer(s1.GetVector());
+	AnimationSystem animationSystem(s1.GetVector());
 
 	//!sprite
 
@@ -132,7 +139,7 @@ int main()
 	//game loop
 	while (!WindowShouldClose())
 	{
-		Update(musicSystem, backgorundManagerV, e1, entityDrawer);
+		Update(musicSystem, backgorundManagerV, s1, entityDrawer, animationSystem);
 	}
 	//!game loop
 

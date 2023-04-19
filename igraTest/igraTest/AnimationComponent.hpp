@@ -14,12 +14,20 @@ class AnimationScript
 public:
 
 	Name_Variable_Tuple mem_Properties;
+	Name_LinkedVariable_Tuple mem_LinkedProperties;
 
 	//Rectangle mem_currentFrameRectangle = {};
 
 	virtual void Animate(const std::shared_ptr<SpriteComponent>& sprite) {}
 
+	virtual void AddLinkedProperty(const std::string& name, const std::string& value) 
+	{ 
+		mem_LinkedProperties.AddVariable(name, std::make_shared<std::string>(value));
+	}
+
 	virtual void UpdateProperties() {}
+
+	
 };
 
 class AnimationComponent : public Component
@@ -71,6 +79,11 @@ public:
 		mem_Properties.AddVariable("frameSpeed", std::to_string(mem_frameSpeed));
 	}
 
+	/*void AddLinkedProperty(const std::string& name, const std::string& value)
+	{
+		mem_LinkedProperties.AddVariable(name, std::make_shared<std::string>(value));
+	}*/
+
 	void Animate(const std::shared_ptr<SpriteComponent>& sprite) override
 	{
 		mem_frameCounter++;
@@ -92,7 +105,8 @@ public:
 
 	void UpdateProperties() override
 	{
-		mem_frameSpeed = std::stof(mem_Properties.pairs["frameSpeed"]);
+		//mem_frameSpeed = std::stof(mem_Properties.pairs["frameSpeed"]);
+		mem_frameSpeed = std::stof(*mem_LinkedProperties.pairs["frameSpeed"]);
 	}
 
 };

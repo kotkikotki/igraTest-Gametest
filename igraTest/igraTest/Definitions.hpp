@@ -5,6 +5,7 @@
 #include<string>
 #include<map>
 #include "raylib.h"
+#include<memory>
 
 #define SQRT2 1.41421356f
 
@@ -46,6 +47,22 @@ public:
 		pairs.insert(std::make_pair(name, value));
 	}
 	void RemoveVariable(const std::string &name)
+	{
+		pairs.erase(name);
+	}
+};
+
+struct Name_LinkedVariable_Tuple
+{
+public:
+
+	std::map<std::string, std::shared_ptr<std::string>> pairs;
+
+	void AddVariable(const std::string& name, const std::shared_ptr<std::string> &s_ptr)
+	{
+		pairs.insert(std::make_pair(name, s_ptr));
+	}
+	void RemoveVariable(const std::string& name)
 	{
 		pairs.erase(name);
 	}

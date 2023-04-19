@@ -23,9 +23,6 @@ public:
 		{
 			if (!(e->HasComponent<SpriteComponent>() && e->HasComponent<TransformComponent>())) return;
 			
-			/*DrawTextureRec(e->GetComponent<SpriteComponent>()->mem_texture,
-						   e->GetComponent<SpriteComponent>()->mem_currentFrameRectangle,
-						   e->GetComponent<TransformComponent>()->mem_position, WHITE);*/
 			std::shared_ptr<SpriteComponent> sprite = e->GetComponent<SpriteComponent>();
 			std::shared_ptr<TransformComponent> transform = e->GetComponent<TransformComponent>();
 

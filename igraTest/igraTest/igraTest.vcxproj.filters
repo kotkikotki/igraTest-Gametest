@@ -115,6 +115,9 @@
     <ClInclude Include="EntityDrawer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AnimationSystem.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\res\assets\used\plx-1.png">
