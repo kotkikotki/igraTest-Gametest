@@ -2,7 +2,7 @@
 
 #define ENTITY_H
 
-#include<map>
+#include<unordered_map>
 #include<memory>
 #include<typeindex>
 
@@ -15,7 +15,8 @@
 class Entity
 {
 private:
-    std::multimap<std::type_index, std::shared_ptr<Component>> mem_components;
+
+    std::unordered_multimap<std::type_index, std::shared_ptr<Component>> mem_components;
 
 public:
     
@@ -29,8 +30,6 @@ public:
         std::cout << "Component added=" << std::endl;
 
         return std::dynamic_pointer_cast<T>(mem_components.insert(std::make_pair(std::type_index(typeid(T)), new T))->second);
-        //
-        
         
     }
     
