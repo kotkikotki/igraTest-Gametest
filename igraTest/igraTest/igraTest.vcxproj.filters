@@ -48,9 +48,6 @@
     <ClCompile Include="MusicSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BackgroundManager_Horizontal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BackgroundManager_Vertical.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -79,7 +76,7 @@
     <ClInclude Include="MusicSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BackgroundManager_Horizontal.h">
+    <ClInclude Include="BackgroundManager_Horizontal.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BackgroundManager_Vertical.h">

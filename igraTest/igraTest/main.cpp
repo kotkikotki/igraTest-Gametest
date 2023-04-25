@@ -5,7 +5,7 @@
 
 #include "raylib.h"
 #include "MusicSystem.h"
-#include "BackgroundManager_Horizontal.h"
+#include "BackgroundManager_Horizontal.hpp"
 #include "BackgroundManager_Vertical.h"
 #include "Definitions.hpp"
 #include "Scene.h"
