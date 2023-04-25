@@ -4,11 +4,11 @@
 
 
 #include "raylib.h"
-#include "MusicSystem.h"
+#include "MusicSystem.hpp"
 #include "BackgroundManager_Horizontal.hpp"
-#include "BackgroundManager_Vertical.h"
+#include "BackgroundManager_Vertical.hpp"
 #include "Definitions.hpp"
-#include "Scene.h"
+#include "Scene.hpp"
 
 #include "Components.h"
 

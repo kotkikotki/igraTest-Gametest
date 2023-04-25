@@ -45,15 +45,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MusicSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BackgroundManager_Vertical.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\res\as it was.wav">
@@ -73,13 +64,13 @@
     </Media>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MusicSystem.h">
+    <ClInclude Include="MusicSystem.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BackgroundManager_Horizontal.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BackgroundManager_Vertical.h">
+    <ClInclude Include="BackgroundManager_Vertical.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Definitions.hpp">
@@ -91,7 +82,7 @@
     <ClInclude Include="Entity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="Scene.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.hpp">

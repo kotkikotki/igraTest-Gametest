@@ -128,10 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BackgroundManager_Vertical.cpp" />
-    <ClCompile Include="MusicSystem.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="..\..\res\as it was.wav" />
@@ -144,16 +141,16 @@
     <ClInclude Include="AnimationComponent.hpp" />
     <ClInclude Include="AnimationSystem.hpp" />
     <ClInclude Include="BackgroundManager_Horizontal.hpp" />
-    <ClInclude Include="BackgroundManager_Vertical.h" />
+    <ClInclude Include="BackgroundManager_Vertical.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="EntityDrawer.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
     <ClInclude Include="TransformComponent.hpp" />
-    <ClInclude Include="MusicSystem.h" />
+    <ClInclude Include="MusicSystem.hpp" />
     <ClInclude Include="Definitions.hpp" />
-    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\res\assets\used\Blue_Nebula_02-1024x1024.png" />
