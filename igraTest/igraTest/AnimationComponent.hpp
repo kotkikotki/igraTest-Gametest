@@ -1,6 +1,6 @@
-#ifndef ANIMATION_COMPONENT_H
+#ifndef ANIMATION_COMPONENT_HPP
 
-#define ANIMATION_COMPONENT_H
+#define ANIMATION_COMPONENT_HPP
 
 #include<map>
 
@@ -158,5 +158,5 @@ public:
 
 
 
-#endif // !ANIMATION_COMPONENT_H
+#endif // !ANIMATION_COMPONENT_HPP
 

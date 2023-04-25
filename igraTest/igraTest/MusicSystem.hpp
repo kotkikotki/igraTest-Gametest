@@ -1,6 +1,6 @@
-#ifndef MUSIC_SYSTEM_H
+#ifndef MUSIC_SYSTEM_HPP
 
-#define MUSIC_SYSTEM_H
+#define MUSIC_SYSTEM_HPP
 
 #include<raylib.h>
 #include<vector>
@@ -127,5 +127,5 @@ public:
 	*/
 };
 
-#endif // !AUDIO_SYSTEM_H
+#endif // !AUDIO_SYSTEM_HPP
 

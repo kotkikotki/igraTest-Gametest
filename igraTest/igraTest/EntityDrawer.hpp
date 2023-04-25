@@ -1,6 +1,6 @@
-#ifndef ENTITY_DRAWER_H
+#ifndef ENTITY_DRAWER_HPP
 
-#define ENTITY_DRAWER_H
+#define ENTITY_DRAWER_HPP
 
 #include "Entity.hpp"
 #include "Components.h"
@@ -37,4 +37,4 @@ public:
 };
 
 
-#endif // !ENTITY_DRAWER_H
+#endif // !ENTITY_DRAWER_HPP

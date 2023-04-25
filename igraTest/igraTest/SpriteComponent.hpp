@@ -1,6 +1,6 @@
-#ifndef SPRITE_COMPONENT_H
+#ifndef SPRITE_COMPONENT_HPP
 
-#define SPRITE_COMPONENT_H
+#define SPRITE_COMPONENT_HPP
 
 #include "Component.hpp"
 
@@ -31,5 +31,5 @@ public:
 
 
 
-#endif // !SPRITE_COMPONENT_H
+#endif // !SPRITE_COMPONENT_HPP
 

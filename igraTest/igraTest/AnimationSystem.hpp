@@ -1,6 +1,6 @@
-#ifndef ANIMATION_SYSTEM_H
+#ifndef ANIMATION_SYSTEM_HPP
 
-#define ANIMATION_SYSTEM_H
+#define ANIMATION_SYSTEM_HPP
 
 #include "Entity.hpp"
 #include "Components.h"
@@ -35,4 +35,4 @@ public:
 };
 
 
-#endif // !ANIMATION_SYSTEM_H
+#endif // !ANIMATION_SYSTEM_HPP

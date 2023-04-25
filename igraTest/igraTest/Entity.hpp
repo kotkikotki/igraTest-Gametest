@@ -1,6 +1,6 @@
-#ifndef ENTITY_H
+#ifndef ENTITY_HPP
 
-#define ENTITY_H
+#define ENTITY_HPP
 
 #include<unordered_map>
 #include<memory>
@@ -70,5 +70,5 @@ public:
 
 
 
-#endif // !ENTITY_H
+#endif // !ENTITY_HPP
 

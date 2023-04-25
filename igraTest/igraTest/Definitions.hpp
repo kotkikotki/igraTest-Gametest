@@ -1,6 +1,6 @@
-#ifndef DEFINITIONS_H
+#ifndef DEFINITIONS_HPP
 
-#define DEFINITIONS_H
+#define DEFINITIONS_HPP
 
 #include<string>
 #include<map>
@@ -76,5 +76,5 @@ inline constexpr bool is_base_of_v = std::is_base_of<Base, Derived>::value;
 template< bool B, class T = void >
 using enable_if_t = typename std::enable_if<B, T>::type;
 
-#endif // !DEFINITIONS_H
+#endif // !DEFINITIONS_HPP
 

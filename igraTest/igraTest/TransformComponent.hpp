@@ -1,6 +1,6 @@
-#ifndef TRANSFORM_COMPONENT_H
+#ifndef TRANSFORM_COMPONENT_HPP
 
-#define TRANSFORM_COMPONENT_H
+#define TRANSFORM_COMPONENT_HPP
 
 #include "Component.hpp"
 
@@ -24,5 +24,5 @@ public:
 };
 
 
-#endif // !TRANSFORM_COMPONENT_H
+#endif // !TRANSFORM_COMPONENT_HPP
 

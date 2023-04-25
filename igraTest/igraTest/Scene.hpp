@@ -1,6 +1,6 @@
-#ifndef SCENE_H
+#ifndef SCENE_HPP
 
-#define SCENE_H
+#define SCENE_HPP
 
 #include "Entity.hpp"
 #include <vector>
@@ -33,5 +33,5 @@ public:
 
 };
 
-#endif // !SCENE_H
+#endif // !SCENE_HPP
 

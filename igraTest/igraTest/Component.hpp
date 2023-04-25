@@ -1,6 +1,6 @@
-#ifndef COMPONENT_H
+#ifndef COMPONENT_HPP
 
-#define COMPONENT_H
+#define COMPONENT_HPP
 
 #include<iostream>
 #include "Definitions.hpp"
@@ -18,5 +18,5 @@ protected:
 };
 
 
-#endif // !COMPONENT_H
+#endif // !COMPONENT_HPP
 
