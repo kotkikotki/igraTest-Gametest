@@ -130,7 +130,6 @@
   <ItemGroup>
     <ClCompile Include="BackgroundManager_Horizontal.cpp" />
     <ClCompile Include="BackgroundManager_Vertical.cpp" />
-    <ClCompile Include="Component.cpp" />
     <ClCompile Include="MusicSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -147,7 +146,7 @@
     <ClInclude Include="AnimationSystem.hpp" />
     <ClInclude Include="BackgroundManager_Horizontal.h" />
     <ClInclude Include="BackgroundManager_Vertical.h" />
-    <ClInclude Include="Component.h" />
+    <ClInclude Include="Component.hpp" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="EntityDrawer.hpp" />

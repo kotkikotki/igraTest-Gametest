@@ -2,7 +2,7 @@
 
 #define SPRITE_COMPONENT_H
 
-#include "Component.h"
+#include "Component.hpp"
 
 class SpriteComponent : public Component
 {

@@ -2,7 +2,7 @@
 
 #define TRANSFORM_COMPONENT_H
 
-#include "Component.h"
+#include "Component.hpp"
 
 class TransformComponent : public Component
 {

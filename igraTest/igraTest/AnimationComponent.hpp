@@ -4,7 +4,7 @@
 
 #include<map>
 
-#include "Component.h"
+#include "Component.hpp"
 #include "SpriteComponent.hpp"
 #include "Definitions.hpp"
 

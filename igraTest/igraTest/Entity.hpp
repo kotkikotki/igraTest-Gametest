@@ -8,7 +8,7 @@
 
 
 #include "Definitions.hpp"
-#include "Component.h"
+#include "Component.hpp"
 
 
 
