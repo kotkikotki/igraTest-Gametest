@@ -19,6 +19,12 @@ class BackgroundManager_Horizontal
 
 	float overallSpeedMultiplier = 0.f;
 
+	//req
+
+	std::shared_ptr<float> overallSpeedMultiplierPtr = std::make_shared<float>(overallSpeedMultiplier);
+
+	//
+
 	//
 	const float maxSpeed = 100.f;
 	//
@@ -109,11 +115,19 @@ public:
 		float newSpeed = speed;
 		if (newSpeed < 0.f) newSpeed = 0.f;
 		overallSpeedMultiplier = speed;
+
+		*overallSpeedMultiplierPtr = overallSpeedMultiplier;
+
 	}
 
 	float GetCurrentSpeed()
 	{
 		return overallSpeedMultiplier;
+	}
+
+	const std::shared_ptr<float>& GetCurrentSpeedPtr()
+	{
+		return overallSpeedMultiplierPtr;
 	}
 
 	void SetPrioritizeHeight(bool value)
