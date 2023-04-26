@@ -3,6 +3,7 @@
 #define ANIMATION_COMPONENT_HPP
 
 #include<map>
+#include<cstdarg>
 
 #include "Component.hpp"
 #include "SpriteComponent.hpp"
@@ -17,15 +18,35 @@ public:
 	Name_LinkedVariable_Tuple mem_LinkedProperties;
 
 	//Rectangle mem_currentFrameRectangle = {};
+	explicit AnimationScript(const std::initializer_list < std::pair<std::string, std::string>>& properties, const std::initializer_list < std::pair<std::string, std::shared_ptr<std::any>>>& linkedProperties)
+	{
+		for (auto pair : properties)
+		{
+			mem_Properties.AddVariable(pair.first, pair.second);
+		}
+		for (auto pair : linkedProperties)
+		{
+			mem_LinkedProperties.AddVariable(pair.first, pair.second);
+		}
+
+	}
 
 	virtual void Animate(const std::shared_ptr<SpriteComponent>& sprite) {}
 
-	virtual void AddLinkedProperty(const std::string& name, const std::string& value) 
-	{ 
-		mem_LinkedProperties.AddVariable(name, std::make_shared<std::string>(value));
-	}
-
 	virtual void UpdateProperties() {}
+
+	virtual void AddProperties(const std::initializer_list < std::pair<std::string, std::string>>& properties, const std::initializer_list < std::pair<std::string, std::shared_ptr<std::any>>>& linkedProperties)
+	{
+		for (auto pair : properties)
+		{
+			mem_Properties.AddVariable(pair.first, pair.second);
+		}
+		for (auto pair : linkedProperties)
+		{
+			mem_LinkedProperties.AddVariable(pair.first, pair.second);
+		}
+
+	}
 
 	
 };
@@ -34,7 +55,7 @@ class AnimationComponent : public Component
 {
 public:
 	
-	std::shared_ptr<AnimationScript> mem_AnimationScript = std::make_shared<AnimationScript>(AnimationScript());
+	std::shared_ptr<AnimationScript> mem_AnimationScript = std::make_shared<AnimationScript>(AnimationScript({},{}));
 	//req
 	std::shared_ptr<SpriteComponent> mem_SpriteComponent;
 
@@ -74,15 +95,7 @@ public:
 	int mem_currentFrame = 0;
 	int mem_frameCounter = 0;
 
-	LoopAnimationScript()
-	{
-		mem_Properties.AddVariable("frameSpeed", std::to_string(mem_frameSpeed));
-	}
-
-	/*void AddLinkedProperty(const std::string& name, const std::string& value)
-	{
-		mem_LinkedProperties.AddVariable(name, std::make_shared<std::string>(value));
-	}*/
+	using AnimationScript::AnimationScript;
 
 	void Animate(const std::shared_ptr<SpriteComponent>& sprite) override
 	{
@@ -105,8 +118,10 @@ public:
 
 	void UpdateProperties() override
 	{
-		//mem_frameSpeed = std::stof(mem_Properties.pairs["frameSpeed"]);
-		mem_frameSpeed = std::stof(*mem_LinkedProperties.pairs["frameSpeed"]);
+		//frameSpeed
+		if (!mem_LinkedProperties.HasVariable("frameSpeed")) return;
+
+		mem_frameSpeed = std::any_cast<float>(mem_LinkedProperties.GetVariable("frameSpeed"));
 	}
 
 };
@@ -122,10 +137,8 @@ public:
 	//
 	float mem_frameSpeed = 1.f;
 
-	AdvancedLoopAnimationScript()
-	{
-		mem_Properties.AddVariable("frameSpeed", std::to_string(mem_frameSpeed));
-	}
+	using AnimationScript::AnimationScript;
+
 
 	void Animate(const std::shared_ptr<SpriteComponent>& sprite) override
 	{
@@ -150,7 +163,10 @@ public:
 
 	void UpdateProperties() override
 	{
-		mem_frameSpeed = std::stof(mem_Properties.pairs["frameSpeed"]);
+		if (!mem_LinkedProperties.HasVariable("frameSpeed")) return;
+
+		std::cout << "=" << std::any_cast<float>(*mem_LinkedProperties.GetVariablePtr("frameSpeed")) << std::endl;
+		mem_frameSpeed = std::any_cast<float>(mem_LinkedProperties.GetVariable("frameSpeed"));
 	}
 
 };

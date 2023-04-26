@@ -6,6 +6,7 @@
 #include<map>
 #include "raylib.h"
 #include<memory>
+#include<any>
 
 #define SQRT2 1.41421356f
 
@@ -38,6 +39,10 @@ public:
 
 	std::map<std::string, std::string> pairs;
 
+	bool HasVariable(const std::string& name)
+	{
+		return pairs.find(name) != pairs.end();
+	}
 	void ChangeVariableByName(const std::string &name, const std::string &value)
 	{
 		pairs[name] = value;
@@ -50,21 +55,43 @@ public:
 	{
 		pairs.erase(name);
 	}
+	const std::string& GetVariable(const std::string& name)
+	{
+		return pairs[name];
+	}
 };
 
 struct Name_LinkedVariable_Tuple
 {
 public:
 
-	std::map<std::string, std::shared_ptr<std::string>> pairs;
+	std::map<std::string, std::shared_ptr<std::any>> pairs;
 
-	void AddVariable(const std::string& name, const std::shared_ptr<std::string> &s_ptr)
+	bool HasVariable(const std::string& name)
+	{
+		return pairs.find(name) != pairs.end();
+	}
+
+	void ChangeVariableByName(const std::string& name, const std::string& value)
+	{
+		*pairs[name] = value;
+	}
+	void AddVariable(const std::string& name, const std::shared_ptr<std::any> &s_ptr)
 	{
 		pairs.insert(std::make_pair(name, s_ptr));
 	}
 	void RemoveVariable(const std::string& name)
 	{
 		pairs.erase(name);
+	}
+	const std::shared_ptr<std::any>& GetVariablePtr(const std::string& name)
+	{
+		return pairs[name];
+	}
+	
+	const std::any& GetVariable(const std::string& name)
+	{
+		return *pairs[name];
 	}
 };
 

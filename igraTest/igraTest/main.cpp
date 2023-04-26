@@ -2,7 +2,6 @@
 #include<vector>
 #include<cmath>
 
-
 #include "raylib.h"
 #include "MusicSystem.hpp"
 #include "BackgroundManager_Horizontal.hpp"
@@ -48,7 +47,7 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 	
 	//scene.GetEntity(0)->GetComponent<AnimationComponent>()->On_Update();
 	animationSystem.On_Update_Animate();
-	scene.GetEntity(0)->GetComponent<AnimationComponent>()->mem_AnimationScript->mem_Properties.ChangeVariableByName("frameSpeed", std::to_string(backgroundManagerV.GetCurrentSpeed()));
+	//scene.GetEntity(0)->GetComponent<AnimationComponent>()->mem_AnimationScript->mem_Properties.ChangeVariableByName("frameSpeed", std::to_string(backgroundManagerV.GetCurrentSpeed()));
 	
 	//!test
 	
@@ -77,7 +76,7 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 int main()
 {
 	//initialize
-	
+
 	//window
 	const int screenWidth = GetScreenWidth();
 	const int screenHeight = GetScreenHeight();
@@ -93,7 +92,7 @@ int main()
 
 	//audio
 	InitAudioDevice();
-	std::vector<std::string> musicFilePaths = { "..\\..\\res\\as it was.wav", "..\\..\\res\\cinema.wav", "..\\..\\res\\daydreaming.wav"};
+	std::vector<std::string> musicFilePaths = { "..\\..\\res\\as it was.wav", "..\\..\\res\\cinema.wav", "..\\..\\res\\daydreaming.wav" };
 	//std::vector<std::string> musicFilePaths = { "..\\..\\res\\rec1.mp3", "..\\..\\res\\rec2.mp3"};
 
 	MusicSystem musicSystem;
@@ -109,21 +108,24 @@ int main()
 	//backgorundManagerH.LoadTextures(backgroundTexturesFilePaths, backgorundTexturesScrollingSpeeds);
 	backgorundManagerV.LoadTextures(backgroundTuples);
 	//!background
-	
+
 	//sprite
 
 	Scene s1;
-	
+
 	Entity e1;
-	
+
 	e1.AddComponent<TransformComponent>()->Initialize({ GetScreenWidth() / 2.f, GetScreenHeight() / 1.25f }, 0.f, false, false, 1.f);
-	
+
 	e1.AddComponent<SpriteComponent>()->Initialize(
 		LoadTexture("..\\..\\res\\assets\\used\\edited\\base.png"), 4, 2, 3.f);
-	e1.AddComponent<AnimationComponent>()->Initialize(std::make_shared<AdvancedLoopAnimationScript>(AdvancedLoopAnimationScript()),
+	e1.AddComponent<AnimationComponent>()->Initialize(std::make_shared<AdvancedLoopAnimationScript>(AdvancedLoopAnimationScript({}, {})),
 		e1.GetComponent<SpriteComponent>());
 	
-	e1.GetComponent<AnimationComponent>()->GetScript()->AddLinkedProperty("frameSpeed", std::to_string(backgorundManagerV.GetCurrentSpeed()));
+	e1.GetComponent<AnimationComponent>()->GetScript()->AddProperties(
+		{}, 
+		{ std::make_pair<std::string, std::shared_ptr<std::any>>("frameSpeed", std::dynamic_pointer_cast<std::any>(backgorundManagerV.GetCurrentSpeedPtr()))});
+	
 
 	s1.AddEntity(e1);
 

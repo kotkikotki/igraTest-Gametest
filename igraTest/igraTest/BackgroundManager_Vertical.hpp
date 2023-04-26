@@ -18,6 +18,14 @@ class BackgroundManager_Vertical
 
 	float overallSpeedMultiplier = 0.f;
 
+	//req
+	
+	std::shared_ptr<float> overallSpeedMultiplierPtr = std::make_shared<float>(overallSpeedMultiplier);
+	
+	//
+	
+
+
 	//
 	const float maxSpeed = 100.f;
 	//
@@ -25,6 +33,8 @@ class BackgroundManager_Vertical
 
 public:
 
+	//
+	
 
 	void LoadTextures(const std::vector<std::string>& imageFilePaths, const std::vector<float>& scrollingSpeeds)
 	{
@@ -106,12 +116,22 @@ public:
 		float newSpeed = speed;
 		if (newSpeed < 0.f) newSpeed = 0.f;
 		overallSpeedMultiplier = speed;
+
+		//
+		*overallSpeedMultiplierPtr = overallSpeedMultiplier;
 	}
 
 	float GetCurrentSpeed()
 	{
 		return overallSpeedMultiplier;
 	}
+
+	const std::shared_ptr<std::any>& GetCurrentSpeedPtr()
+	{
+		return overallSpeedMultiplierPtr;
+	}
+
+	
 
 	void SetPrioritizeHeight(bool value)
 	{
