@@ -20,7 +20,7 @@ public:
 		entities.push_back(std::make_shared<Entity>(entity));
 	}
 
-	const std::shared_ptr<Entity>& GetEntity(int id)
+	std::shared_ptr<Entity>& GetEntity(int id)
 	{
 		return entities[id];
 

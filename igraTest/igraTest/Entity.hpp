@@ -23,7 +23,7 @@ public:
     
 
     template<class T, typename = enable_if_t<is_base_of_v<Component, T>>>
-    const std::shared_ptr<T>& AddComponent()
+    std::shared_ptr<T> AddComponent()
     {
         if (GetComponent<T>() != nullptr)throw std::invalid_argument("Component already exists.");
 
@@ -34,7 +34,7 @@ public:
     }
     
     template<class T, typename = enable_if_t<is_base_of_v<Component, T>>>
-    const std::shared_ptr<T>& GetComponent()
+    std::shared_ptr<T> GetComponent()
     {
         auto itr = mem_components.find(std::type_index(typeid(T)));
         if (itr == mem_components.end()) return std::shared_ptr<T>(nullptr);

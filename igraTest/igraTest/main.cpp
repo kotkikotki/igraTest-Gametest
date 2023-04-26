@@ -25,7 +25,7 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 	}
 	if (IsKeyDown(KEY_W))
 	{
-		backgroundManagerV.SetCurrentSpeed(backgroundManagerV.GetCurrentSpeed() + 3.f*GetFrameTime());
+		backgroundManagerV.SetCurrentSpeed(min(backgroundManagerV.GetCurrentSpeed() + 3.f*GetFrameTime(), 20.f));
 	}
 	if (IsKeyDown(KEY_D))
 	{
