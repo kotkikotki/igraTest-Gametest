@@ -76,7 +76,7 @@ public:
 		
 	}
 
-	std::shared_ptr<AnimationScript> GetScript()
+	std::shared_ptr<AnimationScript>& GetScript()
 	{
 		return mem_AnimationScript;
 	}

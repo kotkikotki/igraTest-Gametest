@@ -20,13 +20,19 @@ public:
 		entities.push_back(std::make_shared<Entity>(entity));
 	}
 
-	std::shared_ptr<Entity> GetEntity(int id)
+	const std::shared_ptr<Entity>& GetEntity(int id)
 	{
 		return entities[id];
 
 	}
 
-	std::vector<std::shared_ptr<Entity>>& GetVector()
+	void RemoveEntity(int id)
+	{
+		entities.erase(entities.begin() + id);
+
+	}
+
+	const std::vector<std::shared_ptr<Entity>>& GetVector()
 	{
 		return entities;
 	}

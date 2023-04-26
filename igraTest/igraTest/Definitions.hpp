@@ -86,7 +86,7 @@ public:
 	{
 		pairs.erase(name);
 	}
-	const std::shared_ptr<void>& GetVariablePtr(const std::string& name)
+	std::shared_ptr<void>& GetVariablePtr(const std::string& name)
 	{
 		return pairs[name];
 	}
