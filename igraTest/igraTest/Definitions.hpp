@@ -37,17 +37,17 @@ struct Name_Variable_Tuple
 {
 public:
 
-	std::map<std::string, std::string> pairs;
+	std::map<std::string, std::any> pairs;
 
 	bool HasVariable(const std::string& name)
 	{
 		return pairs.find(name) != pairs.end();
 	}
-	void ChangeVariableByName(const std::string &name, const std::string &value)
+	void ChangeVariableByName(const std::string &name, const std::any &value)
 	{
 		pairs[name] = value;
 	}
-	void AddVariable(const std::string &name, const std::string  &value)
+	void AddVariable(const std::string &name, const std::any  &value)
 	{
 		pairs.insert(std::make_pair(name, value));
 	}
@@ -55,7 +55,7 @@ public:
 	{
 		pairs.erase(name);
 	}
-	const std::string& GetVariable(const std::string& name)
+	const std::any& GetVariable(const std::string& name)
 	{
 		return pairs[name];
 	}
@@ -65,18 +65,20 @@ struct Name_LinkedVariable_Tuple
 {
 public:
 
-	std::map<std::string, std::shared_ptr<std::any>> pairs;
+	std::map<std::string, std::shared_ptr<void>> pairs;
 
 	bool HasVariable(const std::string& name)
 	{
 		return pairs.find(name) != pairs.end();
 	}
 
-	void ChangeVariableByName(const std::string& name, const std::string& value)
+	template<typename T>
+	void ChangeVariableByName(const std::string& name, const std::shared_ptr<void>& s_ptr)
 	{
-		*pairs[name] = value;
+		pairs[name] = s_ptr;
 	}
-	void AddVariable(const std::string& name, const std::shared_ptr<std::any> &s_ptr)
+
+	void AddVariable(const std::string& name, const std::shared_ptr<void> &s_ptr)
 	{
 		pairs.insert(std::make_pair(name, s_ptr));
 	}
@@ -84,15 +86,17 @@ public:
 	{
 		pairs.erase(name);
 	}
-	const std::shared_ptr<std::any>& GetVariablePtr(const std::string& name)
+	const std::shared_ptr<void>& GetVariablePtr(const std::string& name)
 	{
 		return pairs[name];
 	}
 	
-	const std::any& GetVariable(const std::string& name)
+	/*
+	template<typename T>
+	const T& GetVariable(const std::string& name)
 	{
-		return *pairs[name];
-	}
+		return std::any_cast<T>(*std::static_pointer_cast<std::any>(pairs[name]));
+	}*/
 };
 
 

@@ -18,7 +18,7 @@ public:
 	Name_LinkedVariable_Tuple mem_LinkedProperties;
 
 	//Rectangle mem_currentFrameRectangle = {};
-	explicit AnimationScript(const std::initializer_list < std::pair<std::string, std::string>>& properties, const std::initializer_list < std::pair<std::string, std::shared_ptr<std::any>>>& linkedProperties)
+	explicit AnimationScript(const std::initializer_list < std::pair<std::string, std::any>>& properties, const std::initializer_list < std::pair<std::string, std::shared_ptr<std::any>>>& linkedProperties)
 	{
 		for (auto pair : properties)
 		{
@@ -121,7 +121,8 @@ public:
 		//frameSpeed
 		if (!mem_LinkedProperties.HasVariable("frameSpeed")) return;
 
-		mem_frameSpeed = std::any_cast<float>(mem_LinkedProperties.GetVariable("frameSpeed"));
+		//mem_frameSpeed = mem_LinkedProperties.GetVariablePtr<float>("frameSpeed");
+		mem_frameSpeed = *std::static_pointer_cast<float>(mem_LinkedProperties.GetVariablePtr("frameSpeed"));
 	}
 
 };
@@ -165,8 +166,9 @@ public:
 	{
 		if (!mem_LinkedProperties.HasVariable("frameSpeed")) return;
 
-		std::cout << "=" << std::any_cast<float>(*mem_LinkedProperties.GetVariablePtr("frameSpeed")) << std::endl;
-		mem_frameSpeed = std::any_cast<float>(mem_LinkedProperties.GetVariable("frameSpeed"));
+		//mem_frameSpeed = mem_LinkedProperties.GetVariable<float>("frameSpeed");
+		mem_frameSpeed = *std::static_pointer_cast<float>(mem_LinkedProperties.GetVariablePtr("frameSpeed"));
+
 	}
 
 };

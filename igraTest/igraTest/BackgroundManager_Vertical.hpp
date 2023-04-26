@@ -126,7 +126,7 @@ public:
 		return overallSpeedMultiplier;
 	}
 
-	const std::shared_ptr<std::any>& GetCurrentSpeedPtr()
+	const std::shared_ptr<float>& GetCurrentSpeedPtr()
 	{
 		return overallSpeedMultiplierPtr;
 	}

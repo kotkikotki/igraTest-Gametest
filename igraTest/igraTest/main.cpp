@@ -122,9 +122,7 @@ int main()
 	e1.AddComponent<AnimationComponent>()->Initialize(std::make_shared<AdvancedLoopAnimationScript>(AdvancedLoopAnimationScript({}, {})),
 		e1.GetComponent<SpriteComponent>());
 	
-	e1.GetComponent<AnimationComponent>()->GetScript()->AddProperties(
-		{}, 
-		{ std::make_pair<std::string, std::shared_ptr<std::any>>("frameSpeed", std::dynamic_pointer_cast<std::any>(backgorundManagerV.GetCurrentSpeedPtr()))});
+	e1.GetComponent<AnimationComponent>()->GetScript()->mem_LinkedProperties.AddVariable("frameSpeed", backgorundManagerV.GetCurrentSpeedPtr());
 	
 
 	s1.AddEntity(e1);
