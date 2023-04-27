@@ -17,6 +17,8 @@ public:
 
 	Rectangle mem_currentFrameRectangle = {};
 
+	//using Component::Component;
+
 	
 	void Initialize(const Texture2D& texture, int frameCountX, int frameCountY, float textureScale)
 	{

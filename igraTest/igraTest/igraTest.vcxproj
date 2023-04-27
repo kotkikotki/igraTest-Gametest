@@ -146,7 +146,10 @@
     <ClInclude Include="Components.h" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="EntityDrawer.hpp" />
+    <ClInclude Include="InputComponent.hpp" />
+    <ClInclude Include="InputSystem.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
+    <ClInclude Include="Systems.h" />
     <ClInclude Include="TransformComponent.hpp" />
     <ClInclude Include="MusicSystem.hpp" />
     <ClInclude Include="Definitions.hpp" />

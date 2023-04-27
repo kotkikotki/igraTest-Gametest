@@ -33,7 +33,7 @@ struct Texture_ScrollingSpeed_Tuple
 	float scrollingSpeed = 0.f;
 };
 
-struct Name_Variable_Tuple
+struct Name_Variable_Tuple_Map
 {
 public:
 
@@ -61,7 +61,7 @@ public:
 	}
 };
 
-struct Name_LinkedVariable_Tuple
+struct Name_LinkedVariable_Tuple_Map
 {
 public:
 
@@ -99,6 +99,68 @@ public:
 	}*/
 };
 
+enum KeyCondition
+{
+	Down,
+	Pressed,
+	Released,
+	Up
+};
+
+struct Input_Action_Tuple_Map
+{
+public:
+
+	
+
+	bool GetKeyCondition(int k, KeyCondition c)
+	{
+		switch (c)
+		{
+			case Down:
+				return (IsKeyDown(k));
+				break;
+			case Pressed:
+				return (IsKeyPressed(k));
+				break;
+			case Released:
+				return (IsKeyReleased(k));
+				break;
+			case Up:
+				return (IsKeyUp(k));
+				break;
+		}
+	}
+
+	std::map<std::string, std::pair<int, KeyCondition>> pairs;
+
+	bool HasAction(const std::string& action)
+	{
+		return pairs.find(action) != pairs.end();
+	}
+	void ChangeActuibByName(const std::string& action, int key, KeyCondition condition)
+	{
+		pairs[action] = std::make_pair(key, condition);
+	}
+	void AddAction(const std::string& action, int key, KeyCondition condition)
+	{
+		pairs.insert(std::make_pair(action, std::make_pair(key, condition)));
+	}
+	void RemoveAction(const std::string& action)
+	{
+		pairs.erase(action);
+	}
+	const std::pair<int, KeyCondition>& GetAction(const std::string& action)
+	{
+		return pairs[action];
+	}
+
+	bool GetActionState(const std::string& action)
+	{
+		return GetKeyCondition(pairs[action].first, pairs[action].second);
+	}
+
+};
 
 //c++ 17 standard
 template< class Base, class Derived >

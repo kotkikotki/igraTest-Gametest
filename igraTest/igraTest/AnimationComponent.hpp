@@ -3,7 +3,6 @@
 #define ANIMATION_COMPONENT_HPP
 
 #include<map>
-#include<cstdarg>
 
 #include "Component.hpp"
 #include "SpriteComponent.hpp"
@@ -14,8 +13,8 @@ class AnimationScript
 	
 public:
 
-	Name_Variable_Tuple mem_Properties;
-	Name_LinkedVariable_Tuple mem_LinkedProperties;
+	Name_Variable_Tuple_Map mem_Properties;
+	Name_LinkedVariable_Tuple_Map mem_LinkedProperties;
 
 	//Rectangle mem_currentFrameRectangle = {};
 	explicit AnimationScript(const std::initializer_list < std::pair<std::string, std::any>>& properties, const std::initializer_list < std::pair<std::string, std::shared_ptr<std::any>>>& linkedProperties)
@@ -53,18 +52,24 @@ public:
 
 class AnimationComponent : public Component
 {
-public:
+
 	
 	std::shared_ptr<AnimationScript> mem_AnimationScript = std::make_shared<AnimationScript>(AnimationScript({},{}));
 	//req
 	std::shared_ptr<SpriteComponent> mem_SpriteComponent;
 
+	//using Component::Component;
 
-	void Initialize(const std::shared_ptr<AnimationScript>& script, const std::shared_ptr<SpriteComponent>& sprite)
+public:
+	void Initialize(const std::shared_ptr<AnimationScript>& script)
 	{
 		mem_AnimationScript = script;
-		mem_SpriteComponent = sprite;
 
+		const std::shared_ptr<SpriteComponent>& sprite = GetOwner()->GetComponent<SpriteComponent>();
+		
+
+		mem_SpriteComponent = (sprite == nullptr)? std::make_shared<SpriteComponent>(): sprite;
+		
 		
 		//mem_SpriteComponent->mem_currentFrameRectangle = { 0.f, 0.f, (float)mem_SpriteComponent->mem_texture.width / (float)sprite->mem_frameCount, (float)mem_SpriteComponent->mem_texture.height };
 	}

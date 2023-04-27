@@ -20,7 +20,7 @@ public:
 	}
 	void On_Update_Animate()
 	{
-		for (std::shared_ptr<Entity> e : mem_entities)
+		for (std::shared_ptr<Entity>& e : mem_entities)
 		{
 			if (!(e->HasComponent<AnimationComponent>())) return;
 

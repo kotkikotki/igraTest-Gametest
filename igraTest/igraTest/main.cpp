@@ -10,11 +10,12 @@
 #include "Scene.hpp"
 
 #include "Components.h"
+#include "Systems.h"
 
 
 void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundManagerV, Scene &scene, EntityDrawer &entityDrawer, 
-			AnimationSystem &animationSystem)
-{
+			AnimationSystem &animationSystem, InputSystem &inputSystem)
+{	
 	if(IsKeyPressed(KEY_P))
 	{
 		musicSystem.SetPause();
@@ -27,14 +28,14 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 	{
 		backgroundManagerV.SetCurrentSpeed(min(backgroundManagerV.GetCurrentSpeed() + 3.f*GetFrameTime(), 20.f));
 	}
-	if (IsKeyDown(KEY_D))
+	/*if (IsKeyDown(KEY_D))
 	{
 		scene.GetEntity(0)->GetComponent<TransformComponent>()->mem_rotation += 2.f;
 	}
 	if (IsKeyDown(KEY_A))
 	{
 		scene.GetEntity(0)->GetComponent<TransformComponent>()->mem_rotation -= 2.f;
-	}
+	}*/
 	
 	
 	//audio
@@ -45,9 +46,8 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 
 	//test
 	
-	//scene.GetEntity(0)->GetComponent<AnimationComponent>()->On_Update();
 	animationSystem.On_Update_Animate();
-	//scene.GetEntity(0)->GetComponent<AnimationComponent>()->mem_AnimationScript->mem_Properties.ChangeVariableByName("frameSpeed", std::to_string(backgroundManagerV.GetCurrentSpeed()));
+	inputSystem.On_Update_Input();
 	
 	//!test
 	
@@ -57,7 +57,6 @@ void Update(MusicSystem &musicSystem, BackgroundManager_Vertical &backgroundMana
 		ClearBackground(WHITE);
 
 		backgroundManagerV.UpdateTexturePositions();
-		//entity.GetComponent<TransformComponent>()->mem_position = { (float)GetMouseX(), (float)GetMouseY()};
 		scene.GetEntity(0)->GetComponent<TransformComponent>()->mem_position.x = GetMouseX();
 
 		//test
@@ -93,7 +92,6 @@ int main()
 	//audio
 	InitAudioDevice();
 	std::vector<std::string> musicFilePaths = { "..\\..\\res\\as it was.wav", "..\\..\\res\\cinema.wav", "..\\..\\res\\daydreaming.wav" };
-	//std::vector<std::string> musicFilePaths = { "..\\..\\res\\rec1.mp3", "..\\..\\res\\rec2.mp3"};
 
 	MusicSystem musicSystem;
 	musicSystem.LoadMusicFiles(musicFilePaths);
@@ -105,11 +103,15 @@ int main()
 	BackgroundManager_Vertical backgorundManagerV;
 	backgorundManagerV.SetCurrentSpeed(3.f);
 	backgorundManagerV.SetPrioritizeHeight(false);
-	//backgorundManagerH.LoadTextures(backgroundTexturesFilePaths, backgorundTexturesScrollingSpeeds);
 	backgorundManagerV.LoadTextures(backgroundTuples);
 	//!background
 
 	//sprite
+
+	std::shared_ptr<InputMappings> mappings= std::make_shared<InputMappings>(InputMappings{});
+	mappings->mem_Map.AddAction("rotate_right", KEY_D, Down);
+	mappings->mem_Map.AddAction("rotate_left", KEY_A, Down);
+
 
 	Scene s1;
 
@@ -119,18 +121,18 @@ int main()
 
 	e1.AddComponent<SpriteComponent>()->Initialize(
 		LoadTexture("..\\..\\res\\assets\\used\\edited\\base.png"), 4, 2, 3.f);
-	e1.AddComponent<AnimationComponent>()->Initialize(std::make_shared<AdvancedLoopAnimationScript>(AdvancedLoopAnimationScript({}, {})),
-		e1.GetComponent<SpriteComponent>());
+	e1.AddComponent<AnimationComponent>()->Initialize(std::make_shared<AdvancedLoopAnimationScript>(AdvancedLoopAnimationScript({}, {})));
 	
 	e1.GetComponent<AnimationComponent>()->GetScript()->mem_LinkedProperties.AddVariable("frameSpeed", backgorundManagerV.GetCurrentSpeedPtr());
 	
+	e1.AddComponent<InputComponent>()->Initialize(std::make_shared<RotateInputScript>(RotateInputScript()), mappings);
 
 	s1.AddEntity(e1);
 
 
 	EntityDrawer entityDrawer(s1.GetVector());
 	AnimationSystem animationSystem(s1.GetVector());
-
+	InputSystem inputSystem(s1.GetVector());
 	//!sprite
 
 	//!initialize
@@ -139,7 +141,7 @@ int main()
 	//game loop
 	while (!WindowShouldClose())
 	{
-		Update(musicSystem, backgorundManagerV, s1, entityDrawer, animationSystem);
+		Update(musicSystem, backgorundManagerV, s1, entityDrawer, animationSystem, inputSystem);
 	}
 	//!game loop
 

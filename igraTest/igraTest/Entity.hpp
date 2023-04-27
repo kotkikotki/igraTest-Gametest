@@ -20,8 +20,6 @@ private:
 
 public:
     
-    
-
     template<class T, typename = enable_if_t<is_base_of_v<Component, T>>>
     std::shared_ptr<T> AddComponent()
     {
@@ -29,9 +27,18 @@ public:
 
         std::cout << "Component added=" << std::endl;
 
-        return std::dynamic_pointer_cast<T>(mem_components.insert(std::make_pair(std::type_index(typeid(T)), new T))->second);
-        
+        const std::shared_ptr<T>& ptr = std::dynamic_pointer_cast<T>(mem_components.insert(std::make_pair(std::type_index(typeid(T)), new T))->second);
+
+        ptr->SetOwner(std::make_shared<Entity>(*this));
+
+        return ptr;
     }
+    /*
+    template<class T, typename = enable_if_t<is_base_of_v<Component, T>>>
+    std::shared_ptr<T> AddComponent()
+    {
+        return AddComponentImpl<T>()->SetOwner(std::shared_ptr<Entity>(this));
+    }*/
     
     template<class T, typename = enable_if_t<is_base_of_v<Component, T>>>
     std::shared_ptr<T> GetComponent()

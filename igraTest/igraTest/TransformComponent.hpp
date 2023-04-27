@@ -13,6 +13,9 @@ public:
 	bool mem_flipHorizontal = false;
 	float mem_scale = 1.f;
 
+	//using Component::Component;
+
+
 	void Initialize(const Vector2& position, float rotation, bool flipVertical, bool flipHorizontal, float scale)
 	{
 		mem_position = position;
